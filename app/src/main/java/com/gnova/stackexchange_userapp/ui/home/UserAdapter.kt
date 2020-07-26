@@ -10,7 +10,7 @@ import com.gnova.stackexchange_userapp.R
 import com.gnova.stackexchange_userapp.api.models.User
 import kotlinx.android.synthetic.main.user_grid_view_item.view.*
 
-class UserAdapter() : ListAdapter<User, UserAdapter.UserHolder>(DiffCallback) {
+class UserAdapter(private val onClickListener: OnClickListener) : ListAdapter<User, UserAdapter.UserHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.user_grid_view_item, parent, false)
@@ -19,7 +19,9 @@ class UserAdapter() : ListAdapter<User, UserAdapter.UserHolder>(DiffCallback) {
 
     override fun onBindViewHolder(holder: UserHolder, position: Int) {
         val users = getItem(position)
-
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(users)
+        }
         holder.bind(users)
     }
 
@@ -45,6 +47,8 @@ class UserAdapter() : ListAdapter<User, UserAdapter.UserHolder>(DiffCallback) {
         }
     }
 
-
+    class OnClickListener(val clickListener: (user: User) -> Unit) {
+        fun onClick(user: User) = clickListener(user)
+    }
 
 }

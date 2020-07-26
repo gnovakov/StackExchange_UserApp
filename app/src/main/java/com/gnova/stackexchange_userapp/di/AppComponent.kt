@@ -3,6 +3,7 @@ package com.gnova.stackexchange_userapp.di
 import android.content.Context
 import com.gnova.stackexchange_userapp.di.modules.ApiModule
 import com.gnova.stackexchange_userapp.di.modules.AppModule
+import com.gnova.stackexchange_userapp.ui.detail.DetailActivity
 import com.gnova.stackexchange_userapp.ui.home.HomeActivity
 import dagger.BindsInstance
 import dagger.Component
@@ -21,5 +22,6 @@ interface AppComponent {
     }
 
     fun inject(activity: HomeActivity)
+    fun inject(activity: DetailActivity)
 
 }

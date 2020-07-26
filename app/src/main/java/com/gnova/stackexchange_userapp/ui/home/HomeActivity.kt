@@ -1,27 +1,41 @@
 package com.gnova.stackexchange_userapp.ui.home
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.view.ViewCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.gnova.stackexchange_userapp.App
+import com.gnova.stackexchange_userapp.Const.USER
 import com.gnova.stackexchange_userapp.R
 import com.gnova.stackexchange_userapp.StackApiStatus
 import com.gnova.stackexchange_userapp.ViewModelFactory
 import com.gnova.stackexchange_userapp.api.models.User
+import com.gnova.stackexchange_userapp.ui.detail.DetailActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
 
 class HomeActivity : AppCompatActivity() {
 
+    /*companion object {
+        const val USER = "user_key"
+    }*/
+
     @Inject
     internal lateinit var viewModelFactory: ViewModelFactory<HomeViewModel>
     private lateinit var viewModel: HomeViewModel
-    
 
-    private val adapter = UserAdapter()
+    private val adapter: UserAdapter by lazy {
+        UserAdapter(UserAdapter.OnClickListener {
+            launchDetailActivity(it)
+        })
+    }
+
+   // private val adapter = UserAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         (application as App).appComponent.inject(this)
@@ -65,13 +79,17 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun showUsers(users: List<User>) {
-        Log.d("TAG", users[0].display_name)
         adapter.submitList(users)
 
     }
 
+    private fun launchDetailActivity(selectedUser: User) {
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra(USER, selectedUser)
+        startActivity(intent)
+    }
+
     private fun setupRecyclerView() {
-        Log.d("TAG", "setupRecyclerView")
         user_recycler_view.setHasFixedSize(true)
         user_recycler_view.layoutManager = GridLayoutManager(this, 1)
         user_recycler_view.adapter = adapter
