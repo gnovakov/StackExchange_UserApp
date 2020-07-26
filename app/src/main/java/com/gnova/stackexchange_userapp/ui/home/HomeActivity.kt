@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.view.ViewCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -35,14 +33,16 @@ class HomeActivity : AppCompatActivity() {
         })
     }
 
-   // private val adapter = UserAdapter()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         (application as App).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
+
+        search_button.setOnClickListener {
+            viewModel.getUsers(search_input.text);
+        }
 
         setupRecyclerView()
 
@@ -94,5 +94,6 @@ class HomeActivity : AppCompatActivity() {
         user_recycler_view.layoutManager = GridLayoutManager(this, 1)
         user_recycler_view.adapter = adapter
     }
+
 
 }

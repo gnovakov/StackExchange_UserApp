@@ -1,5 +1,6 @@
 package com.gnova.stackexchange_userapp.ui.home
 
+import android.text.Editable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,14 +23,14 @@ class HomeViewModel @Inject constructor(private val stackRepo: StackRepo): ViewM
     val users: LiveData<List<User>>
         get() = _users
 
-    init {
+    /*init {
         getUsers()
-    }
+    }*/
 
-    private fun getUsers() {
+    fun getUsers(name: Editable) {
         // Using Coroutines
         viewModelScope.launch {
-            var getUsersDeferred = stackRepo.getUsers()
+            var getUsersDeferred = stackRepo.getUsers(name)
             try {
                 _apiStatus.value = StackApiStatus.LOADING
                 var apiResult = getUsersDeferred.await()

@@ -29,7 +29,7 @@ class UserAdapter(private val onClickListener: OnClickListener) : ListAdapter<Us
 
         fun bind(user: User) {
 
-            itemView.userId.text = user.user_id.toString()
+            itemView.reputation.text = user.reputation.toString()
             itemView.userName.text = user.display_name
 
         }

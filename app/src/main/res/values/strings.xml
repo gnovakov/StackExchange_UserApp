@@ -2,9 +2,9 @@
     <string name="app_name">StackExchange App</string>
     <string name="search_button">Search</string>
     <string name="search_input">Enter Name to Search</string>
-    <string name="user_id">User ID</string>
+    <string name="reputation">Reputation</string>
     <string name="user_name">User Name</string>
-    <string name="user_id_heading">User ID</string>
+    <string name="reputation_heading">Reputation</string>
     <string name="user_name_heading">User Name</string>
     <string name="user_avatar_image_desc">User Avatar Image</string>
 </resources>
