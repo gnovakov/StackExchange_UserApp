@@ -9,13 +9,13 @@ import javax.inject.Inject
 
 class DetailViewModel @Inject constructor() : ViewModel() {
 
-    fun onViewInit(user: User) {
-        _selectedUser.value = user
-    }
-
     // MutableLiveData that stores the selected user
     private val _selectedUser = MutableLiveData<User>()
     val selectedUser: LiveData<User>
         get() = _selectedUser
+
+    fun onViewInit(user: User) {
+        _selectedUser.value = user
+    }
 
 }

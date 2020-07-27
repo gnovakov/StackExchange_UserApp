@@ -41,7 +41,7 @@ class HomeActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
 
         search_button.setOnClickListener {
-            viewModel.getUsers(search_input.text);
+            viewModel.onViewInit(search_input.text);
         }
 
         setupRecyclerView()

@@ -23,11 +23,12 @@ class HomeViewModel @Inject constructor(private val stackRepo: StackRepo): ViewM
     val users: LiveData<List<User>>
         get() = _users
 
-    /*init {
-        getUsers()
-    }*/
+    
+    fun onViewInit(name: Editable) {
+        getUsers(name)
+    }
 
-    fun getUsers(name: Editable) {
+    private fun getUsers(name: Editable) {
         // Using Coroutines
         viewModelScope.launch {
             var getUsersDeferred = stackRepo.getUsers(name)
