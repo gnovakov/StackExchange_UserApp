@@ -24,46 +24,46 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/user_name_heading"
+            android:id="@+id/user_name_heading_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="User Name"
+            android:text="@string/user_name_heading"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/avatar_img" />
 
         <TextView
-            android:id="@+id/user_name"
+            android:id="@+id/user_name_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text="User 1234"
+            android:text="@string/user_name_detail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user_name_heading" />
+            app:layout_constraintTop_toBottomOf="@+id/user_name_heading_detail" />
 
         <TextView
-            android:id="@+id/reputation_heading"
+            android:id="@+id/reputation_heading_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="Reputation"
+            android:text="@string/reputation_heading"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user_name" />
+            app:layout_constraintTop_toBottomOf="@+id/user_name_detail" />
 
         <TextView
-            android:id="@+id/reputation"
+            android:id="@+id/reputation_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text="22"
+            android:text="@string/reputation_detail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/reputation_heading" />
+            app:layout_constraintTop_toBottomOf="@+id/reputation_heading_detail" />
 
         <TextView
             android:id="@+id/badges_heading"
@@ -71,10 +71,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="Badges"
+            android:text="@string/badges_heading"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/reputation" />
+            app:layout_constraintTop_toBottomOf="@+id/reputation_detail" />
 
         <TextView
             android:id="@+id/gold_badges_count"
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
-            android:text="5"
+            android:text="@string/gold_badges_count"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/badges_heading" />
 
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="Gold"
+            android:text="@string/gold_badges"
             app:layout_constraintStart_toEndOf="@+id/gold_badges_count"
             app:layout_constraintTop_toBottomOf="@+id/badges_heading" />
 
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
-            android:text="10"
+            android:text="@string/silver_badges_count"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gold_badges" />
 
@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="Siver"
+            android:text="@string/silver_badges"
             app:layout_constraintStart_toEndOf="@+id/silver_badges_count"
             app:layout_constraintTop_toBottomOf="@+id/gold_badges" />
 
@@ -123,7 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="Bronze"
+            android:text="@string/bronze_badges"
             app:layout_constraintStart_toEndOf="@+id/bronze_badges_count"
             app:layout_constraintTop_toBottomOf="@+id/sliver_badges" />
 
@@ -134,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
-            android:text="8"
+            android:text="@string/bronze_badges_count"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sliver_badges" />
 
@@ -145,7 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="Location"
+            android:text="@string/location_heading"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bronze_badges_count" />
@@ -156,7 +156,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text="London"
+            android:text="@string/location"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/location_heading" />
 
@@ -167,7 +167,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="Account Age"
+            android:text="@string/account_age_heading"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/location" />
@@ -178,7 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text="5 - Placeholder"
+            android:text="@string/account_age"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/account_age_heading" />
 
@@ -189,7 +189,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="Creation Date"
+            android:text="@string/creation_date_heading"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/account_age" />
@@ -201,7 +201,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="100dp"
-            android:text="19-05-2018 - Placeholder"
+            android:text="@string/creation_date"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/creation_date_heading" />
