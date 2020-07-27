@@ -1,14 +1,12 @@
 package com.gnova.stackexchange_userapp.ui.home
 
 import android.text.Editable
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.gnova.stackexchange_userapp.StackApiStatus
 import com.gnova.stackexchange_userapp.api.StackRepo
 import com.gnova.stackexchange_userapp.api.models.User
-import kotlinx.coroutines.launch
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(private val stackRepo: StackRepo): ViewModel()  {
@@ -24,24 +22,34 @@ class HomeViewModel @Inject constructor(private val stackRepo: StackRepo): ViewM
         get() = _users
 
     
-    fun onViewInit(name: Editable) {
+    fun onSearchBtnClick(name: Editable) {
         getUsers(name)
     }
 
     private fun getUsers(name: Editable) {
-        // Using Coroutines
-        viewModelScope.launch {
-            var getUsersDeferred = stackRepo.getUsers(name)
-            try {
+        // Using Rx
+        add(stackRepo.getUsers(name).subscribe(
+            {
                 _apiStatus.value = StackApiStatus.LOADING
-                var apiResult = getUsersDeferred.await()
+                _users.value = it.items
                 _apiStatus.value = StackApiStatus.DONE
-                _users.value = apiResult.items
-            } catch (e: Exception) {
+            }, {
                 _apiStatus.value = StackApiStatus.ERROR
                 _users.value = ArrayList()
             }
-        }
+
+        ))
+    }
+
+    val compositeDisposable: CompositeDisposable by lazy { CompositeDisposable() }
+
+    protected fun add(disposable: Disposable) {
+        compositeDisposable.add(disposable)
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    fun cleanUp() {
+        compositeDisposable.clear()
     }
 
 }

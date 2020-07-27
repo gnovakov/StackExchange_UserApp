@@ -1,13 +1,13 @@
 package com.gnova.stackexchange_userapp.di.modules
 
 import com.gnova.stackexchange_userapp.api.StackApi
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 @Module
@@ -23,11 +23,8 @@ class ApiModule {
                 okHttpClient
                     .build()
             )
-            .addConverterFactory( MoshiConverterFactory.create(
-
-            )
-            )
-            .addCallAdapterFactory(CoroutineCallAdapterFactory()) // Needed for Coroutines
+            .addConverterFactory( MoshiConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) // Needed for Rx
             .build()
             .create(StackApi::class.java)
 

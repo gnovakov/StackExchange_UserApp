@@ -19,10 +19,6 @@ import javax.inject.Inject
 
 class HomeActivity : AppCompatActivity() {
 
-    /*companion object {
-        const val USER = "user_key"
-    }*/
-
     @Inject
     internal lateinit var viewModelFactory: ViewModelFactory<HomeViewModel>
     private lateinit var viewModel: HomeViewModel
@@ -41,7 +37,7 @@ class HomeActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
 
         search_button.setOnClickListener {
-            viewModel.onViewInit(search_input.text);
+            viewModel.onSearchBtnClick(search_input.text);
         }
 
         setupRecyclerView()

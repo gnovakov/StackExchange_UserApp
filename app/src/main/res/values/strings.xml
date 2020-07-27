@@ -7,4 +7,19 @@
     <string name="reputation_heading">Reputation</string>
     <string name="user_name_heading">User Name</string>
     <string name="user_avatar_image_desc">User Avatar Image</string>
+    <string name="user_name_detail">User 1234</string>
+    <string name="reputation_detail">22</string>
+    <string name="badges_heading">Badges</string>
+    <string name="gold_badges_count">5</string>
+    <string name="gold_badges">Gold</string>
+    <string name="silver_badges_count">10</string>
+    <string name="silver_badges">Siver</string>
+    <string name="bronze_badges_count">8</string>
+    <string name="bronze_badges">Bronze</string>
+    <string name="location_heading">Location</string>
+    <string name="location">London</string>
+    <string name="account_age_heading">Account Age</string>
+    <string name="account_age">5 - Placeholder</string>
+    <string name="creation_date_heading">Creation Date</string>
+    <string name="creation_date">19-05-2018 - Placeholder</string>
 </resources>

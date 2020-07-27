@@ -2,7 +2,7 @@ package com.gnova.stackexchange_userapp.api
 
 import android.text.Editable
 import com.gnova.stackexchange_userapp.api.models.UserResult
-import kotlinx.coroutines.Deferred
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -16,7 +16,7 @@ interface StackApi {
         @Query("sort") sort: String,
         @Query("inname") inname: Editable,
         @Query("site") site: String
-    ): Deferred<UserResult>
+    ): Single<UserResult>
 
 }
 

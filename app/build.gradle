@@ -23,6 +23,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        // Java 8 Compatibility
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -32,7 +38,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // AppCompat
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation "androidx.appcompat:appcompat:$version_appcompat"
 
     // Core with Ktx
     implementation "androidx.core:core-ktx:$version_core"
@@ -47,6 +53,11 @@ dependencies {
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$version_retrofit"
+
+    // Rx
+    implementation "io.reactivex.rxjava2:rxandroid:$version_rxandroid"
+    implementation "io.reactivex.rxjava2:rxkotlin:$version_rxkotlin"
 
     // okHttp
     implementation "com.squareup.okhttp3:logging-interceptor:$version_okhttp"
@@ -56,20 +67,15 @@ dependencies {
     implementation "com.squareup.moshi:moshi:$version_moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
 
-    // Courutines Library
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_kotlin_coroutines"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_kotlin_coroutines"
-
-    // Retrofit Courutines adapter
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
-
     // Picasso Image Library
     implementation "com.squareup.picasso:picasso:$version_picasso"
 
     // dagger2
     implementation "com.google.dagger:dagger:$version_dagger"
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     kapt "com.google.dagger:dagger-compiler:$version_dagger"
+
+    //RecyclerView
+    implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
