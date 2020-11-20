@@ -5,7 +5,7 @@
 The app allows a user to search for StackExchange users by name displaying up to 20 results per search organised alphabetically and show their reputation and username. Upon tap the app display more information about the user.
 
 ## The Challenge
-
+<img src="https://media.giphy.com/media/bOsSDOGRQ2foUjzydd/giphy.gif" width="300" align="right" hspace="20">
 I was asked to build an app from scratch that:
 
 - Displays an input field and Button to search for users by name.
@@ -33,9 +33,16 @@ I was asked to build an app from scratch that:
 - Improve the look of the UI
 - Try Koin Dependency Injection 
 
-## Libraries
-
-- Networking; Moshi, okHttp, Retrofit, RxJava (Coroutines in a seperate Branch)
-- Dependency Injection: Dagger 2
-- Architecture: MVVM, LiveData
+## Tech-Stack
+- Kotlin
+- Dagger 2 (For Dependency Injection)
+- RxJava (For Managing Background Tasks)
+- Coroutines (For Managing Background Tasks - in a separate Branch)
+- Retrofit (For Networking)
+- JetPack
+    - ViewModel (For managing UI related data in a lifecycle conscious way)
+    - LiveData (For notifying views of data changes)
+- Picasso (For displaying images)
+- Architecture
+    - MVVM (Used in Presentation Layer)
 
