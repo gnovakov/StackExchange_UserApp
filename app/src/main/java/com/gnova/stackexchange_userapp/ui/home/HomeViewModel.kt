@@ -11,34 +11,27 @@ import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(private val stackRepo: StackRepo): ViewModel()  {
 
-    // The most recent API response
-    private val _apiStatus = MutableLiveData<StackApiStatus>()
-    val apiStatus: LiveData<StackApiStatus>
-        get() = _apiStatus
+    // View State
+    private val _viewState = MutableLiveData<HomeViewState>()
+    val viewState: LiveData<HomeViewState>
+        get() = _viewState
 
-    // A User
-    private val _users = MutableLiveData<List<User>>()
-    val users: LiveData<List<User>>
-        get() = _users
-
-    
     fun onSearchBtnClick(name: Editable) {
         getUsers(name)
     }
 
     private fun getUsers(name: Editable) {
-        // Using Rx
-        add(stackRepo.getUsers(name).subscribe(
-            {
-                _apiStatus.value = StackApiStatus.LOADING
-                _users.value = it.items
-                _apiStatus.value = StackApiStatus.DONE
-            }, {
-                _apiStatus.value = StackApiStatus.ERROR
-                _users.value = ArrayList()
-            }
+        _viewState.value = HomeViewState.Loading
+        add(
+            stackRepo.getUsers(name)
+                .subscribe(
+                    {
+                        _viewState.value = HomeViewState.Presenting(it.items)
+                    }, {
+                        _viewState.value = HomeViewState.Error
+                    }
 
-        ))
+                ))
     }
 
     val compositeDisposable: CompositeDisposable by lazy { CompositeDisposable() }

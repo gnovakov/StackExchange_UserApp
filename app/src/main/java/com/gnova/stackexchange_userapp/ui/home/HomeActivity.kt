@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.gnova.stackexchange_userapp.App
 import com.gnova.stackexchange_userapp.Const.USER
 import com.gnova.stackexchange_userapp.R
-import com.gnova.stackexchange_userapp.StackApiStatus
 import com.gnova.stackexchange_userapp.ViewModelFactory
 import com.gnova.stackexchange_userapp.api.models.User
 import com.gnova.stackexchange_userapp.ui.detail.DetailActivity
@@ -42,34 +41,15 @@ class HomeActivity : AppCompatActivity() {
 
         setupRecyclerView()
 
-        observeApiStatus()
+        observeViewState()
 
     }
 
-    private fun observeApiStatus() {
-        viewModel.apiStatus.observe(this, Observer {
-            it?.let {
-                when (it) {
-                    StackApiStatus.LOADING -> {
-                        Log.d("TAG", "LOADING")
-                    }
-                    StackApiStatus.ERROR -> {
-                        Log.d("TAG", "ERROR")
-                    }
-                    StackApiStatus.DONE -> {
-                        Log.d("TAG", "DONE")
-                        observeUsers()
-                    }
-
-                }
-            }
-        })
-    }
-
-    private fun observeUsers() {
-        viewModel.users.observe(this, Observer {
-            it?.let {
-                showUsers(it)
+    private fun observeViewState() {
+        viewModel.viewState.observe(this, Observer {
+            when (it) {
+                is HomeViewState.Presenting -> showUsers(it.user)
+                is Error -> Log.d("TAG", "ERROR")
             }
         })
     }
