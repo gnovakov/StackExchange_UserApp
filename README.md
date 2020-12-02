@@ -1,4 +1,4 @@
-# Android Coding Task
+# Stack Exchange user App
 
 ## App Description
 
