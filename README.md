@@ -44,5 +44,5 @@ I was asked to build an app from scratch that:
     - LiveData (For notifying views of data changes)
 - Picasso (For displaying images)
 - Architecture
-    - MVVM (Used in Presentation Layer)
+    - MVVM
 
